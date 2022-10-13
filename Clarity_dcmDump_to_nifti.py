@@ -8,7 +8,7 @@ from copy_dicom_tags import copy_dicom_tags
 from create_rtstruct_mask_sB import create_rtstruct_masks
 
 '''Organizes CT and CBCT images contained in DICOMRawData based on Series Instance UID. 
-Saves as nifti files to user-specified directory. 
+Saves as nifti files to user-specified directory.
 
 Note: The DICOMRawData folder created as part of the Clarity Export Patient function does not contain any ultrasound 
 data, as these are not inherently in DICOM format.
@@ -19,23 +19,24 @@ Inputs:
     Example: ct_directory =  '/Users/sblackledge/Documents/GENIUSIII_exports/Clarity/g01/DICOMRawData
     2. save_dir: str - full filepath where nifti files should be saved. 
     Example: save_dir = '/Users/sblackledge/Documents/GENIUSII_exports/nifti_dump/images'
+    3. patient_name: str - string indicating name of patient. Example: 'g01'
     
 Output:
     Nifti file for every dcm image dataset contained in DICOMRawData.
 '''
 
-def DICOMRawData_to_nifti(ct_directory, save_dir):
+def DICOMRawData_to_nifti(ct_directory, save_dir, patient_name):
     study_uids_blacklist = {}
     floc_el = 0x19100c #Used to store the file location in read dicoms
 
     #Create 'images' sub-directory.
-    im_dir = os.path.join(save_dir, 'images')
+    im_dir = os.path.join(save_dir, 'images', patient_name)
     CHECK_FOLDER = os.path.isdir(im_dir)
     if not CHECK_FOLDER:
         os.makedirs(im_dir)
 
     #Create 'masks' sub-directory
-    mask_dir = os.path.join(save_dir, 'masks')
+    mask_dir = os.path.join(save_dir, 'masks', patient_name)
     CHECK_FOLDER = os.path.isdir(mask_dir)
     if not CHECK_FOLDER:
         os.makedirs(mask_dir)
@@ -128,7 +129,7 @@ def DICOMRawData_to_nifti(ct_directory, save_dir):
         }
 
         month_name = month_dict[month]
-        date_name = month_name + day + '.nii'
+        date_name = month_name + day + '.nii.gz'
         if 'CBCT' in series_description:
             fname = 'CBCT' + '_' + date_name
         else:
@@ -142,13 +143,14 @@ def DICOMRawData_to_nifti(ct_directory, save_dir):
     rtstruct_images_sub = create_rtstruct_masks(ref_rtstruct, ref_ct_image) #output: list of sitk objects
 
     for im in rtstruct_images_sub:
-        structure_name = im.GetMetaData("ContourName") + '.nii'
+        structure_name = im.GetMetaData("ContourName") + '.nii.gz'
         fpath_structure = os.path.join(mask_dir, structure_name)
         sitk.WriteImage(im, fpath_structure, True)
 
     return ct_dicoms, ref_ct_image, rtstruct_images_sub
 
+patient_name = 'g01'
 ct_directory = '/Users/sblackledge/Documents/GENIUSII_exports/Clarity/g01/DICOMRawData'
 save_dir = '/Users/sblackledge/Documents/GENIUSII_exports/nifti_dump'
-ct_dicoms, ct_example, rtstruct_sitk = DICOMRawData_to_nifti(ct_directory, save_dir)
+ct_dicoms, ct_example, rtstruct_sitk = DICOMRawData_to_nifti(ct_directory, save_dir, patient_name)
 
