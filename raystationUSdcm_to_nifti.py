@@ -10,7 +10,7 @@ from sitk_im_create_simple import sitk_im_create_simple
 '''Writes US dicom exported from Raystation to compressed nifti file to user-specified location.
 Details:
     US images are not saved in the dicom file format by default. To get them in this format, we must use RayStation as a
-    middle-man. Specifically, we must register the US to the CTref in the Clarity workstation, export these registered 
+    middle-man. Specifically, we must register the US to the CTref/CBCTs in the Clarity workstation, and export these registered 
     US images to RayStation. From Raystation, we export these US images to the bridge.
     
     NOTE: DON'T SELECT ALL DESIRED US FILES AND EXPORT IN ONE GO!! This will cause all of the files from different fractions
