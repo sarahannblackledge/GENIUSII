@@ -1,4 +1,4 @@
-# From DICOM to MATLAB app:
+# From DICOM to Nifti:
 ## Pipeline for converting Raystation dicom exports into anonymized niftis for use in ITK-SNAP and bespoke MATLAB app
 
 ### System Requirements:
