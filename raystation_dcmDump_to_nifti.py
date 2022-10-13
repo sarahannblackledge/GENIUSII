@@ -6,7 +6,7 @@ import sys
 
 sys.path.append('/Users/sblackledge/PycharmProjects/pythonProject/GENIUSII')
 from copy_dicom_tags import copy_dicom_tags
-from create_rtstruct_mask_sB import create_rtstruct_masks
+from create_rtstruct_mask_SB import create_rtstruct_masks
 from utils_RayStation import transformation_from_reg_dcm, get_date_name
 
 '''Organizes CT and CBCT images exported from RayStation based on Series Instance UID. 
