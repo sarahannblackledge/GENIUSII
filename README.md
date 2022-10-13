@@ -19,5 +19,5 @@ Mosaiq ==> Clinical Raystation (not anonymized) ==> Research Raystation (not ano
 *Be sure to tick the 'Anonymization' export box when exporting from Research Raystation, but set the following:
   1. Patient Name: gXX (i.e. g02)
   2. Patient ID: GENIUSII
-  **3. Tick 'Retain dates' and 'Retain UIDs'**
+  3. **Tick 'Retain dates' and 'Retain UIDs'**
 
