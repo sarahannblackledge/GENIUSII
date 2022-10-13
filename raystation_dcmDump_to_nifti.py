@@ -15,7 +15,8 @@ Saves as nifti files to user-specified directory.
 Notes: 
 1. This only works on CT and CBCT data. Unfortunately it is impossible to sort through any US data exported in bulk
 as the dates are not retained in the metadata upon transfer from Clarity to RayStation.
-2. When you export from RayStation, be sure to anonymize, but tick the relevant boxes so that UIDs and study dates are retained.
+2. When you export from RayStation, be sure to anonymize, but tick the relevant boxes so that UIDs and study dates are
+ retained.
 
 Inputs:
     1. ct_directory: str - full filepath where data exported from RayStation are stored. This contains a dump of 
