@@ -14,9 +14,9 @@ By 'clinical 'dicoms', I am referring to the following:
   2. All desired CBCTs and corresponding registrations (denoted as 'REG' on the Raystation export window). Note: the registrations are obtained by  importing the CBCTS from Mosaiq using the 'import XVI' script in Clinical Raystation. These registrations are critical because they represent the CBCT-to-CT registrations performed clinically.
 
 The export pipeline shoudl be as follows:
-Mosaiq ==> Clinical Raystation (not anonymized) ==> Research Raystation (not anonymized) ==> rtp-bridge (anonymized *)
+Mosaiq ==> Clinical Raystation (not anonymized) ==> Research Raystation (not anonymized) ==> rtp-bridge (anonymized*)
 
-* Be sure to tick the 'Anonymization' export box when exporting from Research Raystation, but set the following:
+*Be sure to tick the 'Anonymization' export box when exporting from Research Raystation, but set the following:
   1. Patient Name: gXX (i.e. g02)
   2. Patient ID: GENIUSII
   **3. Tick 'Retain dates' and 'Retain UIDs'**
