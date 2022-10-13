@@ -5,7 +5,7 @@ import pydicom as dicom
 import sys
 sys.path.append('/Users/sblackledge/PycharmProjects/pythonProject/GENIUSII')
 from copy_dicom_tags import copy_dicom_tags
-from create_rtstruct_mask_sB import create_rtstruct_masks
+from create_rtstruct_mask_SB import create_rtstruct_masks
 
 '''Organizes CT and CBCT images contained in DICOMRawData based on Series Instance UID. 
 Saves as nifti files to user-specified directory.
