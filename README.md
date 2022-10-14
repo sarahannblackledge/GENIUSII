@@ -117,4 +117,11 @@ How to generate a workspace:
       
       CTV-T HRinit: red mask
       
+  8. Save the workspace by navigating to Workspace ==> Save workspace as. Label the workspace using the following naming convention:
+      (a) gXX_FractionXX_CBCT-US (for workspaces that contain both US and CBCT)
+      (b) gXX_FractionXX_CBCT (for workspaces that contain CBCT-only)
+      (c) gXX_FractionXX_US (for workspaces that contain US-only). 
+      
+  **TIP for speeding up subsequent workspaces after the first one for a particular patient has been generated**
+  Rather than performing steps 1 - 8 for every single fraction, you can simply remove the daily images (either the CBCT, US, or both) and drag over new ones. In this way, the ref CT and structures will already be loaded into ITK-snap with the correct settings. To remove a daily image from the viewer, right click on the image in the left-hand pane of the Image Layer inspector and click 'Close image "*image name*". Then drag the desired daily image into the ITK-snap image viewer and right click to select 'Display as overlay'. By default, this new daily image will be the last image in the list of additional images in the layer inspector, which will cause display issues when toggling structures on and off. To fix, select the 'General' tab in the Image Layer Inspector, click onthe daily image to highlight, and then select the 'Move up' button in the 'Display order' line. Click until your daily image is the first image in the 'Additional Images' category in the left-hand pane. In cases in which both US adn CBCT are available, teh CBCT should be the first 'additional image' and the US should be teh second.
 
