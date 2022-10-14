@@ -40,6 +40,7 @@ Upon successul export of the clinical dicom data, your patient folder should con
     3. patient_name: str - string indicating name of patient. Example: 'g02'
 
 Output:
+
     .nii.gz file for every (1) dcm image dataset and (2) relevant structure from the RTSTRUCT.dcm file exported from RayStation
     Note: no date or name information is stored in the metadata of these nifti files, so they are considered fully anonymized.
     HOWEVER, the nifti filename contains the study date by default. I recommend changing this manually retrospectively once
