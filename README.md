@@ -81,5 +81,6 @@ Output:
 
     1. nii.gz file of CBCT that has been registered/resampled to the CTref. Note: no date or name information is stored in the metadata of these nifti files, so they are considered fully anonymized. HOWEVER, the nifti filename contains the study date by default. I recommend changing this manually retrospectively once all desired data has been converted to nifti format (e.g. Fraction1.nii.gz).
 
-
+### Step 6: Copy nifti dump folder to storage device
+Once you've got all of the data you want to analyse in your nifti_dump folder, you can copy this to the external storage device to be used with the MATLAB app. You can then make the ITK-SNAP workspaces by operating on the nifti files saved on the storage device. 
 
