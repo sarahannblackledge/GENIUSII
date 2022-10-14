@@ -99,7 +99,7 @@ How to generate a workspace:
   4. Go to the 'Contrast' tab on the 'Image Layer Inspector', make sure the CBCT image is highlighted in the left-hand pane by clicking on it, and then select 'Auto' to adjust the default contrast of the CBCT image. 
   5. Repeat steps 3 and 4 for the US image (if required). 
   6. Set the Opacity of the US image to 0.5 by going to the 'General' tab in the Image Layer Inspector, and typing '50%' in the 'Overlay opacity' textbox.
-  7. Load in the masks with the following order and colormaps:
+  7. Load in the masks in the order listed below. The Overlay Opacity should be set to 50% (see step 6), and the visibility should be set to 'off' by clicking the eye icon next to the transparency slider under the structure name in the left-hand pane. The colormap can be set to the specified mask by selecting the 'Color Map' tab in the Image Layer inspector, and selecting the appropriate map in the colormap list.
   
       PTV45_1:	gold mask
       
