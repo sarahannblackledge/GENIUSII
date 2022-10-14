@@ -46,9 +46,17 @@ Output:
     all desired data has been converted to nifti format (e.g. Fraction1.nii.gz).
 
 ### Step 3: Format ultrasound data for export to RayStation
-On the Clarity workstation, you need to apply the couch shifts to the corresponding US image so that the ultrasounds are in the same frame of reference as the corresponding CBCT and CT SIM. Instructions for this are on the workstation Desktop. Once these shifts have been applied and the resulting images saved as 'contouring workspaces', these can be exported to Research Raystation. They are not anonymized, so can be linked up with the CT/CBCT data previously imported. Note: the only reason that we need to export to Raystation is so that Clarity will automatically convert the images into the dicom file format. Direct export from Clarity will result ultrasounds saved in the so-called 'usf' file format in which US images are still in polar coordinates adn without couch-shift registrations applied.
+On the Clarity workstation, you need to apply the couch shifts to the corresponding US image so that the ultrasounds are in the same frame of reference as the corresponding CBCT and CT SIM. Instructions for this are on the workstation Desktop. Once these shifts have been applied and the resulting images saved as 'contouring workspaces', these can be exported to Research Raystation. They are not anonymized, so can be linked up with the CT/CBCT data previously imported. Note: the only reason that we need to export to Raystation is so that Clarity will automatically convert the images into the dicom file format with the desired registrations applied. Direct export from Clarity will result ultrasounds saved in the so-called 'usf' file format in which US images are still in polar coordinates in the native frame of reference. Also note: the ultrasounds show up in the RayStation 'data management' tab in the order in which they were exported -- NOT the order in which they were acquired. 
 
-### Step 4: Export US data from Raystation ==> rtp-bridge ==> Local machine
+### Step 4: Export US data from Raystation to your local machine
 
+The export pipeline should be as follows:
+Research Raystation (not anonymized) ==> rtp-bridge (anonymized*) ==> Local machine
 
+*Be sure to tick the 'Anonymization' export box when exporting from Research Raystation, but set the following:
+  1. Patient Name: gXX (i.e. g02)
+  2. Patient ID: GENIUSII
+  3. **Tick 'Retain UIDs'**
+
+Note: there is no date information in the US dicom metadata when exported from Clarity to RayStation. Although it is theoretically possible to sort through a huge dump of US dicom data and determine which individual files correspond to a single 3D image, it is *impossible* to trace back which date/fraction these images came from. Therefore, the export process in this step is quite tedious, as each US 
 
