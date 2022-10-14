@@ -24,7 +24,7 @@ Mosaiq ==> Clinical Raystation (not anonymized) ==> Research Raystation (not ano
 Note: On the bridge/local machine, each patient's clinical dicoms need to be saved in a unique folder. Don't lump all of the patients together into one huge dicom dump.
 
 ### Step 2: Convert clinical dicom data dumped within specified patient directory (Local machine) into niftis organized by patient name and date
-Upon successul export of the clinical dicom data, your patient folder should contain a massive set of dicom files (CT1.X.XX.XXXX, REG1.X.XX, RS1.X.XX...). Run the following code to read in these files and save as organized niftis:
+Upon successul export of the clinical dicom data, your patient folder should contain a massive set of dicom files (CT1.X.XX.XXXX, REG1.X.XX, RS1.X.XX...). Run the following code to convert the dicoms into nifti files and automatically save them in the 'images' and 'masks' sub-directories corresponding to your patient name (see Destination File Structure). 
 
 1. raystation_dcmDump_to_nifi.py
 
@@ -40,7 +40,7 @@ Upon successul export of the clinical dicom data, your patient folder should con
     3. patient_name: str - string indicating name of patient. Example: 'g02'
 
 Output:
-    Nifti file for every (1) dcm image dataset and (2) relevant structure from the RTSTRUCT.dcm file exported from RayStation
+    .nii.gz file for every (1) dcm image dataset and (2) relevant structure from the RTSTRUCT.dcm file exported from RayStation
     Note: no date or name information is stored in the metadata of these nifti files, so they are considered fully anonymized.
     HOWEVER, the nifti filename contains the study date by default. I recommend changing this manually retrospectively once
     all desired data has been converted to nifti format (e.g. Fraction1.nii.gz).
@@ -58,5 +58,26 @@ Research Raystation (not anonymized) ==> rtp-bridge (anonymized*) ==> Local mach
   2. Patient ID: GENIUSII
   3. **Tick 'Retain UIDs'**
 
-Note: there is no date information in the US dicom metadata when exported from Clarity to RayStation. Although it is theoretically possible to sort through a huge dump of US dicom data and determine which individual files correspond to a single 3D image, it is *impossible* to trace back which date/fraction these images came from. Therefore, the export process in this step is quite tedious, as each US 
+Note: there is no date information in the US dicom metadata when exported from Clarity to RayStation. Although it is theoretically possible to sort through a huge dump of US dicom data and determine which individual files correspond to a single 3D image, it is *impossible* to trace back which date/fraction these images came from. 
+
+Therefore, the export process in this step is quite tedious, as each US needs to be exported individually into an appropriately named folder (i.e. US_Jul01) so you can work out which US corresponds to which CBCT/CT. Don't lump US and CBCT/CT data into the same folders.
+
+### Step 5: Convert US dicom data from each individual folder (Local machine) into niftis organized by patient name and date
+Upon successfuly export of the US data, you should have many directories; each labelled as 'US_MMMDD' and containing the dicom files corresponding to the date in the directory name. Run the following code for each folder separately (so if you have 20 folders, you'll need to run the following code 20 times). This will convert the dicoms into nifti files and automatically save them in the 'images' sub-directory corresponding to your patient name (see Destination File Structure). 
+
+ 1. raystationUSdcm_to_nifti.py
+
+  Inputs:
+
+    1. dcm_dir_us: full file path to the directory where the US dicoms have been saved (exported from RayStation)
+    
+    2. save_dir: full file path to the directory where you wish to save the nifti files. 
+        i.e. save_dir = '/Users/sblackledge/Documents/GENIUSII_exports/nifti_dump/images/g01' 
+
+
+Output:
+
+    1. nii.gz file of CBCT that has been registered/resampled to the CTref. Note: no date or name information is stored in the metadata of these nifti files, so they are considered fully anonymized. HOWEVER, the nifti filename contains the study date by default. I recommend changing this manually retrospectively once all desired data has been converted to nifti format (e.g. Fraction1.nii.gz).
+
+
 
