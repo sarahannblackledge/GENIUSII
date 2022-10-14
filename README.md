@@ -71,6 +71,7 @@ Upon successfuly export of the US data, you should have many directories; each l
   Inputs:
 
     1. dcm_dir_us: full file path to the directory where the US dicoms have been saved (exported from RayStation)
+    e.g. dcm_dir_us = '/Users/sblackledge/Documents/GENIUSII_exports/RayStation/g01/US_July06'
     
     2. save_dir: full file path to the directory where you wish to save the nifti files. 
         i.e. save_dir = '/Users/sblackledge/Documents/GENIUSII_exports/nifti_dump/images/g01' 
