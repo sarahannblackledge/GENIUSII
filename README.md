@@ -32,8 +32,10 @@ Upon successul export of the clinical dicom data, your patient folder should con
     1. ct_directory: str - full filepath where data exported from RayStation are stored. This contains a dump of 
     all CBCT, CT, RTSTRUCT, and REG dicoms, and is not organized in an intuitive way.
     Example: ct_directory =  '/Users/sblackledge/Documents/GENIUSII_exports/RayStation/g02/Raystation_CTdump'
+    
     2. save_dir: str - full filepath where nifti files should be saved. 
     Example: save_dir = '/Users/sblackledge/Documents/GENIUSII_exports/nifti_dump'
+    
     3. patient_name: str - string indicating name of patient. Example: 'g02'
 
 Output:
