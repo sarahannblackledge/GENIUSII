@@ -101,12 +101,20 @@ How to generate a workspace:
   6. Set the Opacity of the US image to 0.5 by going to the 'General' tab in the Image Layer Inspector, and typing '50%' in the 'Overlay opacity' textbox.
   7. Load in the masks with the following order and colormaps:
   
-      PTV45_1	gold mask
-      PTV45_2	purple mask
-      PTV45_3	pink mask
-      PTV45_Robust	blue mask
-      CTV-T LRinit_1_Full	Green mask
-      Bladder	Yellow mask
-      Rectum	Brown mask
-      CTV-T HRinit	red mask
+      PTV45_1:	gold mask
+      
+      PTV45_2:	purple mask
+      
+      PTV45_3:	pink mask
+      
+      PTV45_Robust:	blue mask
+      
+      CTV-T LRinit_1_Full:	green mask
+      
+      Bladder:	yellow mask
+      
+      Rectum:	brown mask
+      
+      CTV-T HRinit: red mask
+      
 
