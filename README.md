@@ -82,5 +82,31 @@ Output:
     1. nii.gz file of CBCT that has been registered/resampled to the CTref. Note: no date or name information is stored in the metadata of these nifti files, so they are considered fully anonymized. HOWEVER, the nifti filename contains the study date by default. I recommend changing this manually retrospectively once all desired data has been converted to nifti format (e.g. Fraction1.nii.gz).
 
 ### Step 6: Copy nifti dump folder to storage device
-Once you've got all of the data you want to analyse in your nifti_dump folder, you can copy this to the external storage device to be used with the MATLAB app. You can then make the ITK-SNAP workspaces by operating on the nifti files saved on the storage device. 
+Once you've got all of the data you want to analyse in your nifti_dump folder, you can copy this to the external storage device to be used with the MATLAB app. You can then make the ITK-SNAP workspaces (See Step 7) by loading in the desired nifti files saved on the storage device. 
+
+### Step 7: Generate ITK-SNAP workspaces
+An ITK-SNAP workspace is a file that contains information about the so-called 'image layers' (source nifti files) and display settings (transparency, colormaps, default contrast and zoom, etc.) for data loaded into the ITK-SNAP image viewer. In other words, a saving a 'workspace' is like saving a particular 'state' of the viewer once you have loaded all of the required images and adjusted the display settings appropriately. 
+
+For this project, we will have to save all of the workspaces ourselves in advance to ensure consisent and correct loading of images and default display settings. *All workspaces must be saved on the external hard drive in the 'workspaces' folder: /Volumes/SarahB_USB/nifti_dump/workspaces*. The source files that these workspaces reference should also be saved on the external hard drive in the 'nifti_dump' folder (file paths listed below):
+
+1. /Volumes/SarahB_USB/nifti_dump/images
+2. /Volumes/SarahB_USB/nifti_dump/masks
+  
+How to generate a workspace:
+  1. Drag the CT SIM image into ITK-snap to 'load as main image'. 
+  2. Press ⌘i to open the 'Image Layer Inspector'. Select the 'Contrast' tab, and click 'Auto'.
+  3. Drag the CBCT image (if required) into ITK-snap. Select 'Load as Additional Image'. By default, all 'additional' images are loaded as separate thumbnails in the right hand corner of the image viewer, and the observer can toggle back and forth between the two images. This is not what we want. Right click on the CBCT image and click 'Display as Overlay' to superimpose the CBCT on top of the CT SIM.
+  4. Go to the 'Contrast' tab on the 'Image Layer Inspector', make sure the CBCT image is highlighted in the left-hand pane by clicking on it, and then select 'Auto' to adjust the default contrast of the CBCT image. 
+  5. Repeat steps 3 and 4 for the US image (if required). 
+  6. Set the Opacity of the US image to 0.5 by going to the 'General' tab in the Image Layer Inspector, and typing '50%' in the 'Overlay opacity' textbox.
+  7. Load in the masks with the following order and colormaps:
+  
+      PTV45_1	gold mask
+      PTV45_2	purple mask
+      PTV45_3	pink mask
+      PTV45_Robust	blue mask
+      CTV-T LRinit_1_Full	Green mask
+      Bladder	Yellow mask
+      Rectum	Brown mask
+      CTV-T HRinit	red mask
 
