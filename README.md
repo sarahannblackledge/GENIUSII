@@ -23,8 +23,11 @@ Mosaiq ==> Clinical Raystation (not anonymized) ==> Research Raystation (not ano
 
 Note: On the bridge/local machine, each patient's clinical dicoms need to be saved in a unique folder. Don't lump all of the patients together into one huge dicom dump.
 
+
 ### Step 2: Convert clinical dicom data dumped within specified patient directory (Local machine) into niftis organized by patient name and date
 Upon successul export of the clinical dicom data, your patient folder should contain a massive set of dicom files (CT1.X.XX.XXXX, REG1.X.XX, RS1.X.XX...). Run the following code to convert the dicoms into nifti files and automatically save them in the 'images' and 'masks' sub-directories corresponding to your patient name (see Destination File Structure). 
+
+**Modify sys.path.append line?**
 
 1. raystation_dcmDump_to_nifi.py
 
@@ -65,6 +68,8 @@ Therefore, the export process in this step is quite tedious, as each US needs to
 
 ### Step 5: Convert US dicom data from each individual folder (Local machine) into niftis organized by patient name and date
 Upon successfuly export of the US data, you should have many directories; each labelled as 'US_MMMDD' and containing the dicom files corresponding to the date in the directory name. Run the following code for each folder separately (so if you have 20 folders, you'll need to run the following code 20 times). This will convert the dicoms into nifti files and automatically save them in the 'images' sub-directory corresponding to your patient name (see Destination File Structure). 
+
+**Modify sys.path.append line?**
 
  1. raystationUSdcm_to_nifti.py
 
