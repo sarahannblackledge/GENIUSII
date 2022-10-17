@@ -25,6 +25,8 @@ Inputs:
     2. save_dir: str - full filepath where nifti files should be saved. 
     Example: save_dir = '/Users/sblackledge/Documents/GENIUSII_exports/nifti_dump'
     3. patient_name: str - string indicating name of patient. Example: 'g02'
+    4. masks_of_interest: list of strings: exact names of masks that should be exported and saved as niftis.
+        example: masks_of_interest = ['Bladder', 'PTV45_1', 'PTV45_2', 'PTV45_3', 'PTV45_Robust', 'Rectum', 'CTV-E', 'CTV-T HRinit', 'CTV-T LRinit_1_Full']
 
 Output:
     Nifti file for every (1) dcm image dataset and (2) relevant structure from the RTSTRUCT.dcm file exported from RayStation
