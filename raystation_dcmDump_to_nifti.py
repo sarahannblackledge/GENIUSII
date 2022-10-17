@@ -34,7 +34,7 @@ Output:
 '''
 
 
-def DICOMRawData_to_nifti(ct_directory, save_dir, patient_name):
+def DICOMRawData_to_nifti(ct_directory, save_dir, patient_name, masks_of_interest):
     study_uids_blacklist = {}
     floc_el = 0x19100c  # Used to store the file location in read dicoms
 
@@ -138,7 +138,7 @@ def DICOMRawData_to_nifti(ct_directory, save_dir, patient_name):
                 sitk.WriteImage(CBCT_resample, save_path, True)
 
     # Generate masks of each structure in RTSTRUCT.
-    rtstruct_images_sub = create_rtstruct_masks(ref_rtstruct, ref_ct_image)  # output: list of sitk objects
+    rtstruct_images_sub = create_rtstruct_masks(ref_rtstruct, ref_ct_image, masks_of_interest)  # output: list of sitk objects
 
     for im in rtstruct_images_sub:
         structure_name = im.GetMetaData("ContourName") + '.nii.gz'
@@ -147,9 +147,9 @@ def DICOMRawData_to_nifti(ct_directory, save_dir, patient_name):
 
     return ct_dicoms, ref_ct_image, rtstruct_images_sub
 
-
+masks_of_interest = ['Bladder', 'PTV45_1', 'PTV45_2', 'PTV45_3', 'PTV45_Robust', 'Rectum', 'CTV-E', 'CTV-T HRinit', 'CTV-T LRinit_1_Full']
 patient_name = 'g02'
 ct_directory = '/Users/sblackledge/Documents/GENIUSII_exports/RayStation/g02/RayStation_CTdump'
 save_dir = '/Users/sblackledge/Documents/GENIUSII_exports/nifti_dump'
-ct_dicoms, ct_example, rtstruct_sitk = DICOMRawData_to_nifti(ct_directory, save_dir, patient_name)
+ct_dicoms, ct_example, rtstruct_sitk = DICOMRawData_to_nifti(ct_directory, save_dir, patient_name, masks_of_interest)
 

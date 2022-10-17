@@ -8,7 +8,7 @@ sys.path.append('/Users/sblackledge/PycharmProjects/pythonProject/GENIUSII')
 from get_python_tags import get_dicom_tags
 
 
-def create_rtstruct_masks(rtstruct_dicom, ct_image):
+def create_rtstruct_masks(rtstruct_dicom, ct_image, masks_of_interest):
     """ Convert rtstruct dicom file to sitk images
 
     Args
@@ -30,10 +30,6 @@ def create_rtstruct_masks(rtstruct_dicom, ct_image):
     #0x30060022 = ROI Number
     #0x30060026 = ROI Name
     structure_sets = {int(d[0x30060022].value):d for d in rtstruct_dicom[0x30060020]}
-
-    masks_of_interest = ['Bladder', 'PTV45_1', 'PTV45_2', 'PTV45_3', 'PTV45_Robust', 'Rectum', 'CTV-E', 'CTV-T HRinit', 'CTV-T LRinit_1_Full']
-    # masks_of_interest = ['Rectum', 'Bowel', 'Bladder', 'Penile_Bulb', 'ProstateOnly', 'SVsOnly', 'CTV_Prostate', 'CTV_SVs', 'CTV_Prostate+SVs', 'PTV_4860']
-    #masks_of_interest = ['ProstateOnly', 'SVsOnly', 'Rectum', 'Bladder', 'Bowel']
 
     orX, orY, orZ = ct_image.GetOrigin()
     szX, szY, szZ = ct_image.GetSize()
