@@ -140,6 +140,8 @@ compound_im = compound_calculate(resampled_ims, indices)
 compound_name = 'June17_compound.nii.gz' #Don't forget to include file extension in name (.nii.gz)
 patient_id = 'g01'
 
+'''End Code modification'''
+
 # Create patient sub-directory within dir_compounds directory.
 im_dir = os.path.join(dir_compounds, patient_id)
 CHECK_FOLDER = os.path.isdir(im_dir)
