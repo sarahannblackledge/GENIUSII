@@ -116,7 +116,7 @@ def DICOMRawData_to_nifti(ct_directory, save_dir, patient_name, masks_of_interes
 
     #Find CBCT corresponding to REG files, generated resampled CBCT (to match ref CT), and save as nifti
     for reg_dicom in reg_dicoms:
-        ref_ID = reg_dicom.ReferencedSeriesSequence[1].SeriesInstanceUID
+        ref_ID = reg_dicom.ReferencedSeriesSequence[-1].SeriesInstanceUID
         for series_uid in ct_dicoms:
             if series_uid == ref_ID:
                 test = ct_dicoms[series_uid]
