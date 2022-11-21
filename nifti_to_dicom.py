@@ -53,7 +53,6 @@ def convertNsave(rescaled_arr, m, b, ipp, pix_spacing, series_id, save_dir, inde
     dateStr = dt.strftime('%Y%m%d')
     dicom_file.InstanceCreationTime = timeStr
     dicom_file.InstanceCreationDate = dateStr
-    dicom_file.PatientBirthDate = dateStr
 
     #Update SOPInstanceUID (each slice) and SeriesInstanceUID (constant for all slices in series)
     dicom_file.SOPInstanceUID = new_SOP_id
@@ -109,8 +108,8 @@ def nifti_to_dicoms(fpath_nifti_compound, save_dir, fpath_template):
 fpath_template = '/Users/sblackledge/Documents/GENIUSII_exports/RayStation/g02/July_25_1447/CT1.2.826.0.1.3680043.2.1181.1.4.273440548174504.1666686875.0.dcm'
 
 '''START EDIT'''
-save_dir = '/Users/sblackledge/Documents/GENIUSII_exports/compound_dicoms'
-fpath_nifti_compound = '/Users/sblackledge/Documents/GENIUSII_exports/nifti_dump/compound_images/g02/Jul_25_compound.nii'
+save_dir = '/Users/sblackledge/Documents/GENIUSII_exports/compound_dicoms/g02/Aug01'
+fpath_nifti_compound = '/Users/sblackledge/Documents/GENIUSII_exports/nifti_dump/compound_images/g02/Aug01_compound.nii.gz'
 '''END EDIT'''
 
 
